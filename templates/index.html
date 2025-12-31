@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryNest AI - Create Magical Stories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Local Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+    <!-- Local html2pdf -->
+    <script src="{{ url_for('static', filename='js/html2pdf.bundle.min.js') }}"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://educationalvoice.co.uk/wp-content/uploads/2024/12/Leonardo_Phoenix_A_vibrant_whimsical_illustration_showcasing_t_1.jpg.webp"
+                alt="StoryNest Logo"
+                style="height: 50px; border-radius: 50%; border: 2px solid white; margin-right: 10px;">
+            <span>StoryNest AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" id="nav-home">Home</a>
+            <a href="#" id="nav-create">Create Story</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Hero Section (Home View) -->
+        <header id="home-view" class="hero">
+            <div class="hero-content">
+                <h1>Where Imagination Takes Flight</h1>
+                <p>Spark your child's creativity with StoryNest AI. We turn simple ideas into magical, illustrated
+                    storybooks instantly, fostering a love for reading and learning in a safe, fun environment.</p>
+                <p>Discover a world where every thought becomes a beautiful adventure, tailored just for your little
+                    dreamers.</p>
+                <button id="cta-start-btn" class="cta-btn">Start Creating Magic</button>
+            </div>
+            <div class="hero-image">
+                <img src="https://educationalvoice.co.uk/wp-content/uploads/2024/12/Leonardo_Phoenix_A_vibrant_whimsical_illustration_showcasing_t_1.jpg.webp"
+                    alt="Magical Story World">
+            </div>
+        </header>
+
+        <!-- Create Story View (Initially Hidden) -->
+        <div id="create-view" class="content-wrapper hidden">
+            <!-- Left Side: Cloud Input Form -->
+            <div class="input-section">
+                <div class="cloud-container">
+                    <h3>Story Input Form</h3>
+
+                    <div class="form-group">
+                        <input type="text" id="story-idea" placeholder="Type your story idea here...">
+                    </div>
+
+                    <div class="form-group">
+                        <select id="cartoon-style">
+                            <option value="">Select Cartoon Style (Optional)</option>
+                            <option value="None">None (Original AI Style)</option>
+                            <option value="Doraemon">Doraemon Style</option>
+                            <option value="Shinchan">Shinchan Style</option>
+                            <option value="Chhota Bheem">Chhota Bheem Style</option>
+                            <option value="Tom and Jerry">Tom and Jerry Style</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="language">
+                            <option value="English">English</option>
+                            <option value="Telugu">Telugu</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Tamil">Tamil</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox-group"
+                        style="text-align: left; padding-left: 10%; display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="edu-mode" style="width: auto; margin-bottom: 0;">
+                        <label for="edu-mode" style="cursor: pointer; color: #555; font-weight: 600;">Educational Mode
+                            (Explain a Topic)</label>
+                    </div>
+
+                    <button id="generate-btn" class="generate-btn">Generate Story</button>
+
+                    <div id="loading" class="loading hidden">
+                        <div class="moon-icon"><i class="fas fa-moon"></i></div>
+                        <p>Creating your magical story...</p>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="action-btn"><i class="fas fa-file-pdf"></i> Download as PDF</button>
+                    <button id="read-audio-btn" class="action-btn"><i class="fas fa-volume-up"></i> Read Story
+                        Aloud</button>
+                </div>
+            </div>
+
+            <!-- Right Side: Storybook Viewer -->
+            <div class="preview-section">
+                <h3>Storybook Viewer</h3>
+                <div class="book-container">
+                    <div class="book" id="book">
+                        <!-- Cover Page -->
+                        <div class="page cover-page active">
+                            <div class="page-content">
+                                <h2>Your Story Awaits...</h2>
+                                <p>Fill out the form to begin.</p>
+                                <div class="placeholder-icon"><i class="fas fa-star"></i></div>
+                            </div>
+                        </div>
+                        <!-- Dynamic Pages will be injected here -->
+                    </div>
+
+                    <div class="book-controls">
+                        <button id="prev-btn" class="nav-btn" disabled>Previous</button>
+                        <button id="next-btn" class="nav-btn" disabled>Next</button>
+                    </div>
+
+                    <div class="book-actions">
+                        <button class="secondary-btn"><i class="fas fa-file-pdf"></i> Download as PDF</button>
+                        <button id="book-read-audio-btn" class="secondary-btn"><i class="fas fa-volume-up"></i> Read
+                            Story Aloud</button>
+                        <button id="new-story-btn" class="secondary-btn" style="display: none;"><i
+                                class="fas fa-plus"></i> Create New Story</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>StoryNest AI: Sparking imagination, one story at a time.</p>
+        <p>&copy; 2025 All rights reserved. Developed by Venkat.</p>
+    </footer>
+
+    <!-- Text to Image API Placeholder Script check -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+{
+  "error": "AI response was not valid JSON",
+  "raw": "{\n  \"book_title\": \"Toasty's Grand Martian Adventure\",\n  \"topic\": \"A brave little toaster going to Mars.\",\n  \"learning_goal\": \"To introduce children to the idea of space exploration, bravery, and the concept of different planets, while also highlighting the importance of friendship and facing"
+}

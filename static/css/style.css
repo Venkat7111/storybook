@@ -1,0 +1,577 @@
+:root {
+    --primary-color: #6a5acd;
+    /* Soft Purple */
+    --secondary-color: #ffd700;
+    /* Gold/Star */
+    --bg-gradient-start: #dbeafe;
+    --bg-gradient-end: #e0e7ff;
+    --cloud-bg: #eeffff;
+    --text-color: #333;
+    --accent-blue: #87ceeb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 80px);
+    /* Adjust based on navbar/footer height */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: transparent;
+    color: #6a5acd;
+    font-weight: 600;
+    margin-top: auto;
+    /* Push to bottom if flex container */
+    width: 100%;
+}
+
+/* PDF Generation Mode */
+.pdf-mode {
+    width: 800px !important;
+    height: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+    background: white !important;
+    display: block !important;
+}
+
+.pdf-mode .page {
+    display: flex !important;
+    opacity: 1 !important;
+    position: relative !important;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+    /* Prevent cutting inside a page */
+    page-break-after: always;
+    border: 1px solid #eee;
+    height: auto !important;
+    min-height: 800px;
+    /* Force A4-ish height ratio */
+}
+
+.pdf-mode .page-content {
+    color: black !important;
+    /* Ensure text is black */
+}
+
+.pdf-mode .book-controls,
+.pdf-mode .book-actions {
+    display: none !important;
+}
+
+.pdf-mode .story-scroll-container {
+    overflow: visible !important;
+    max-height: none !important;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Space out logo and links */
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    height: 80px;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    /* Align image and text */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #6a5acd;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #6a5acd;
+}
+
+/* Hero */
+.hero-section {
+    padding: 2rem 5%;
+    text-align: left;
+}
+
+.hero-section h2 {
+    color: #a0522d;
+    /* Brownish logical for earth tones or stick to design purple */
+    color: #8b4513;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section h2 {
+    color: #b75e63;
+    /* Trying to match the 'Create Magical Stories' reddish/brown tone */
+}
+
+.hero-section p {
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.cta-button {
+    background-color: #ffccbc;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    color: #5d4037;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Layout */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* Cloud Input Section */
+.input-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cloud-container {
+    background-color: #d1ecf1;
+    /* Light blueish */
+    background: radial-gradient(circle at 50% 50%, #ffffff, #b3e5fc);
+    padding: 3rem;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    /* Cloud shape approx */
+    box-shadow: 0 10px 25px rgba(135, 206, 235, 0.5);
+    border: 5px solid #81d4fa;
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.cloud-container h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 80%;
+    padding: 0.8rem;
+    border-radius: 2rem;
+    border: 1px solid #ddd;
+    outline: none;
+    background: #fffafa;
+}
+
+.generate-btn {
+    background-color: #b39ddb;
+    color: white;
+    padding: 0.8rem 2.5rem;
+    border: none;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    box-shadow: 0 4px 10px rgba(179, 157, 219, 0.4);
+    transition: transform 0.2s;
+}
+
+.generate-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Loading */
+.loading {
+    margin-top: 1rem;
+    color: #666;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.moon-icon {
+    font-size: 2rem;
+    color: #ffd700;
+    animation: swing 2s infinite ease-in-out;
+}
+
+@keyframes swing {
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.action-btn {
+    background: #ffe0b2;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    color: #5d4037;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Storybook Viewer */
+.preview-section {
+    flex: 1.2;
+    min-width: 350px;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    background: #fff8e1;
+    /* Old paper colorish */
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 8px solid #9fa8da;
+    /* Borders matching design */
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    overflow: hidden;
+    /* Maintain Aspect Ratio */
+}
+
+/* Page Design */
+.page {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: row;
+    /* Desktop: Side by Side */
+    gap: 2rem;
+    animation: fadeIn 0.5s;
+    align-items: center;
+}
+
+.page.active {
+    display: flex;
+}
+
+/* Full Width Mode */
+.input-section.hidden {
+    display: none;
+}
+
+.preview-section.full-width {
+    flex: 100%;
+    max-width: 100%;
+    padding: 0 5%;
+    /* Add side padding */
+}
+
+.preview-section.full-width .book {
+    max-width: 1200px;
+    /* Larger book in full mode (increased from 1000px) */
+    height: 70vh;
+    /* Responsive height (viewport height based) */
+    min-height: 600px;
+}
+
+.preview-section.full-width .page {
+    font-size: 1.4rem;
+    /* Even larger text */
+}
+
+.page-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    padding: 1rem;
+    text-align: left;
+    height: 100%;
+    /* Ensure it takes full height */
+    overflow: hidden;
+    /* Container itself shouldn't scroll, let inner do it if needed */
+}
+
+.story-scroll-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center text block if short */
+    overflow-y: auto;
+    padding-right: 10px;
+    /* Space for scrollbar */
+    max-height: 100%;
+}
+
+/* Custom Scrollbar */
+.story-scroll-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.story-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.story-scroll-container::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 3px;
+}
+
+.page-number {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+}
+
+.page-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 10%;
+    margin-top: 2rem;
+    gap: 3rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: #4a4a8a;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.cta-btn {
+    padding: 1rem 2rem;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: rotate(2deg);
+    /* Slight playful tilt */
+    transition: transform 0.3s;
+}
+
+.hero-image img:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Respond to mobile */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2rem 5%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+}
+
+.cover-page .page-content {
+    text-align: center;
+    align-items: center;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    color: #ffd700;
+    margin-top: 2rem;
+}
+
+/* Controls */
+.book-controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: #e0e0e0;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.book-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.secondary-btn {
+    background: #fff3e0;
+    border: 1px solid #ffe0b2;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #f57c00;
+}
+
+/* Story Text specific styling */
+.story-text {
+    font-family: 'Book Antiqua', 'Palatino', serif;
+    /* More book-like font */
+    color: #2c3e50;
+    font-size: 1.25rem;
+    /* Larger font */
+    line-height: 1.8;
+    /* Better spacing */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .page {
+        flex-direction: column-reverse;
+        /* Image top, text bottom on mobile usually better, or keep vertical */
+    }
+
+    .book {
+        height: auto;
+        min-height: 500px;
+    }
+
+    .cloud-container {
+        border-radius: 2rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+    }
+}
